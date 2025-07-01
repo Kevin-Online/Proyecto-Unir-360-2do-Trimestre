@@ -1,0 +1,78 @@
+/* style.css */
+
+/* Define la fuente principal para toda la aplicación */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Ajusta el fondo y centra el contenido principal */
+    background-color: #f7f7f7; /* Un gris muy claro */
+}
+
+/* Estilo general para los botones de acción */
+.action-button {
+    border-radius: 0.75rem; /* Bordes más redondeados para los botones */
+    transition: all 0.2s ease-in-out; /* Transición suave para efectos hover */
+}
+
+/* Estilo para los elementos individuales del arreglo (los círculos) */
+.array-element {
+    display: flex;
+    flex-direction: column; /* Apila el índice y el valor */
+    align-items: center;
+    justify-content: center;
+    width: 120px; /* Ancho fijo para el círculo */
+    height: 120px; /* Alto fijo para el círculo */
+    border-radius: 50%; /* Hace que el elemento sea un círculo */
+    background-color: #ffffff; /* Fondo blanco para el círculo */
+    border: 2px solid #d1d5db; /* Borde gris claro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    font-weight: bold;
+    color: #4b5563; /* Color de texto gris oscuro */
+    position: relative; /* Para posicionar el índice */
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Transiciones para efectos */
+}
+
+/* Estilo para el índice del arreglo */
+.array-element .index {
+    position: absolute; /* Posiciona el índice fuera del círculo principal */
+    top: -25px; /* Ajusta la posición vertical */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajuste fino de centrado */
+    font-size: 0.9rem;
+    color: #6b7280; /* Color gris para el índice */
+    background-color: #e5e7eb; /* Fondo ligeramente más oscuro para el índice */
+    padding: 2px 8px;
+    border-radius: 9999px; /* Bordes completamente redondeados para el índice */
+    border: 1px solid #9ca3af; /* Borde para el índice */
+}
+
+/* Estilo para el valor dentro del círculo */
+.array-element .value {
+    font-size: 1.5rem; /* Tamaño de fuente más grande para el valor */
+    margin-top: 10px; /* Espacio entre el índice y el valor */
+}
+
+/* Estilo para el elemento seleccionado/accedido */
+.array-element.selected {
+    border-color: #3b82f6; /* Borde azul para el elemento seleccionado */
+    transform: scale(1.05); /* Ligeramente más grande al seleccionar */
+    box-shadow: 0 6px 10px rgba(59, 130, 246, 0.3); /* Sombra azul para el seleccionado */
+}
+
+/* Estilo para el elemento que se va a eliminar */
+.array-element.deleting {
+    background-color: #fca5a5; /* Fondo rojo claro */
+    border-color: #ef4444; /* Borde rojo */
+    opacity: 0.5; /* Ligeramente transparente */
+    transform: scale(0.9); /* Ligeramente más pequeño */
+}
+
+/* Estilos para los mensajes de feedback */
+#messageArea.success {
+    background-color: #d1fae5; /* Verde claro */
+    color: #065f46; /* Verde oscuro */
+}
+
+#messageArea.error {
+    background-color: #fee2e2; /* Rojo claro */
+    color: #991b1b; /* Rojo oscuro */
+}
