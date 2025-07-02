@@ -3,10 +3,14 @@
         <meta charset="UTF-8">
         <title>Estructuras de datos</title>
         <link rel="stylesheet" href="estilos.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="main">
             <div class="header">
+                <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0mSnbbmH8Nb4q5YHpA7sBd3g92_hBdhLeg&s" alt="Logo UNIR"> -->
                 <h1>Estructuras de datos</h1>
                 <label for="seleccion_de_datos"></label>
                 <select id="seleccion_de_datos" name="seleccion_de_datos">
@@ -21,12 +25,16 @@
 
             </div>
             <div class="interaction">
-                <input type="text" id="valor" placeholder="Valor">
-                <input type="text" id="indice" placeholder="índice">
-                <Button id="añadir">Añadir</Button>
-                <Button id="acceder">Acceder</Button>
-                <Button id="actualizar">Actualizar</Button>
-                <Button id="eliminar">Eliminar</Button>
+                <div>
+                    <input type="text" id="valor" placeholder=" Valor">
+                    <Button id="añadir">Añadir</Button>
+                </div>
+                <div>
+                    <input type="text" id="indice" placeholder=" Índice">
+                    <Button id="acceder">Acceder</Button>
+                    <Button id="actualizar">Actualizar</Button>
+                    <Button id="eliminar">Eliminar</Button>
+                </div>
             </div>
         </div>
     </body>
