@@ -2,16 +2,35 @@
     <head>
         <meta charset="UTF-8">
         <title>Estructuras de datos</title>
+        <link rel="icon" type="image/png" href="Recursos/favicon.png">
         <link rel="stylesheet" href="estilos.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="main">
+        <div class="info" id="info">
+            <div class="info-header">
+                <img class="logo" src="Recursos/Logo.png" alt="Logo Unir">
+                <ul class="nav">
+                    <li><a href="#info">Inicio</a></li>
+                    <li><a href="#main">Estructuras de datos</a></li>
+                    <li><a href="#" id="ayuda-btn">Ayuda</a></li>
+                </ul>
+            </div>
+            <div class="info-body">
+                <h2>Bienvenido a la plataforma interactiva de Estructuras de Datos</h2>
+                <p>
+                    Explora y aprende sobre las principales estructuras de datos utilizadas en programación: arreglos, listas enlazadas, pilas, colas y árboles. 
+                    Utiliza las herramientas interactivas para experimentar con cada estructura, añadir y manipular elementos, y comprender su funcionamiento de manera visual y práctica.
+                </p>
+                <p>
+                    Usa el menú superior para navegar entre las secciones y comienza a fortalecer tus conocimientos en informática y desarrollo de software.
+                </p>
+            </div>
+        </div>
+        <div class="main" id="main">
             <div class="header">
-                <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0mSnbbmH8Nb4q5YHpA7sBd3g92_hBdhLeg&s" alt="Logo UNIR"> -->
-                <h1>Estructuras de datos</h1>
                 <label for="seleccion_de_datos"></label>
                 <select id="seleccion_de_datos" name="seleccion_de_datos">
                     <option value="arreglos">Arreglos</option>
@@ -20,6 +39,12 @@
                     <option value="colas">Colas</option>
                     <option value="arbol">Arbol</option>
                 </select>
+                <span class="icono-ayuda" title="Ayuda">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="12" fill="#234"/>
+                        <text x="12" y="17" text-anchor="middle" font-size="16" fill="#fff" font-family="Arial" font-weight="bold">?</text>
+                    </svg>
+                </span>
             </div>
             <div class="content">
                 <p>Arreglo vacio. ¡Añade elementos!</p>
@@ -35,6 +60,16 @@
                     <Button id="actualizar">Actualizar</Button>
                     <Button id="eliminar">Eliminar</Button>
                 </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <div id="modal-ayuda" class="modal-ayuda">
+            <div class="modal-ayuda-content">
+                <div class="modal-ayuda-header">
+                    <h2>¿Cómo funciona esta página?</h2>
+                    <span class="close-ayuda">&times;</span>
+                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/8hly31xKli0" title="Ayuda" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen a></iframe>
             </div>
         </div>
     </body>
