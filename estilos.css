@@ -173,6 +173,8 @@ html {
 .interaction > div {
     display: flex;
     gap: 0.5vw;
+    width: 700px;
+    justify-content: center;
 }
 
 h1 {
@@ -189,14 +191,13 @@ p {
     padding: 0;
     margin: 0;
     font-size: 4vh;
-    color: #444;
+    color: #333;
     text-shadow: none;
 }
 
 #seleccion_de_datos {
-    width: auto;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    min-width: fit-content;
+    width: 25vw;
     height: 8vh;
     outline: none;
     border: 0px solid #545454;
@@ -213,9 +214,6 @@ p {
 }
 
 #seleccion_de_datos:hover {
-    width: auto;
-    padding-left: 2vw;
-    padding-right: 2vw;
     height: 8vh;
     background-color: #efefef;
 }
@@ -227,11 +225,6 @@ p {
     font-size: 2.5vh;
     border-radius: 3vh;
     border: 0px;
-    text-align: center;
-    text-align-last: center;
-    padding: 10vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
     height: 8vh;
 }
 
@@ -239,9 +232,8 @@ p {
     width: 45vw;
     height: 8vh;
     font-size: 2vh;
-    border: 3px solid #545454;
-    border-radius: 3vh;
-    background-color: #dedede;
+    border: 5px solid rgb(37, 83, 233);
+    border-radius: 2vh;
     font-weight: bold;
     padding: 1vw;
 }
@@ -254,20 +246,19 @@ p {
     min-width: fit-content;
     height: 8vh;
     font-size: 2vh;
-    border: 3px solid #545454;
-    border-radius: 3vh;
-    background-color: #dedede;
+    border: 5px solid rgb(37, 83, 233);
+    border-radius: 5vh;
     font-weight: bold;
     padding: 1vw;
+    background-color: rgb(37, 83, 233);
 }
 
 #indice {
     width: 25vw;
     height: 8vh;
     font-size: 2vh;
-    border: 3px solid #545454;
-    border-radius: 3vh;
-    background-color: #dedede;
+    border: 5px solid rgb(37, 83, 233);
+    border-radius: 2vh;
     font-weight: bold;
     padding: 1vw;
 }
@@ -280,11 +271,11 @@ p {
     min-width: fit-content;
     height: 8vh;
     font-size: 2vh;
-    border: 3px solid #545454;
-    border-radius: 3vh;
-    background-color: #dedede;
+    border: 5px solid rgb(37, 83, 233);
+    border-radius: 5vh;
     font-weight: bold;
     padding: 1vw;
+    background-color: rgb(37, 233, 53);
 }
 
 #actualizar {
@@ -295,11 +286,11 @@ p {
     min-width: fit-content;
     height: 8vh;
     font-size: 2vh;
-    border: 3px solid #545454;
-    border-radius: 3vh;
-    background-color: #dedede;
+    border: 5px solid rgb(37, 83, 233);
+    border-radius: 5vh;
     font-weight: bold;
     padding: 1vw;
+    background-color: rgb(233, 213, 37);
 }
 
 #eliminar {
@@ -310,11 +301,38 @@ p {
     min-width: fit-content;
     height: 8vh;
     font-size: 2vh;
-    border: 3px solid #545454;
-    border-radius: 3vh;
-    background-color: #dedede;
+    border: 5px solid rgb(37, 83, 233);
+    border-radius: 5vh;
     font-weight: bold;
     padding: 1vw;
+    background-color: rgb(233, 37, 37);
+}
+
+#añadir, #acceder, #actualizar, #eliminar {
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-color: #222222;
+}
+
+#añadir:hover {
+    background-color: #efefef;
+    color: rgb(37, 83, 233);
+}
+
+#acceder:hover {
+    background-color: #efefef;
+    color: rgb(37, 233, 53);
+}
+
+#actualizar:hover {
+    background-color: #efefef;
+    color: rgb(233, 213, 37);
+}
+
+#eliminar:hover {
+    background-color: #efefef;
+    color: rgb(233, 37, 37);
 }
 
 .modal-ayuda {
