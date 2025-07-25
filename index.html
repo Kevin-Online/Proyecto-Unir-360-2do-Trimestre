@@ -39,7 +39,7 @@
                     <option value="colas">Colas</option>
                     <option value="arbol">Arbol</option>
                 </select>
-                <span class="icono-ayuda" title="Ayuda">
+                <span class="icono-ayuda-arreglos" title="Ayuda">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                         <circle cx="12" cy="12" r="12" fill="#234"/>
                         <text x="12" y="17" text-anchor="middle" font-size="16" fill="#fff" font-family="Arial" font-weight="bold">?</text>
@@ -66,10 +66,19 @@
         <div id="modal-ayuda" class="modal-ayuda">
             <div class="modal-ayuda-content">
                 <div class="modal-ayuda-header">
-                    <h2>¿Cómo funciona esta página?</h2>
+                    <h2>¿Qué es esta página?</h2>
                     <span class="close-ayuda">&times;</span>
                 </div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/8hly31xKli0" title="Ayuda" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen a></iframe>
+                <iframe id="iframe-ayuda" width="560" height="315" src="https://www.youtube.com/embed/8hly31xKli0" title="Ayuda" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen a></iframe>
+            </div>
+        </div>
+        <div id="pop-up-arreglos" class="pop-up-arreglos">
+            <div class="pop-up-arreglos-contenido">
+                <div class="pop-up-arreglos-header">
+                    <h2>¿Cómo funciona esta página?</h2>
+                    <span class="pop-up-arreglos-cerrar">&times;</span>
+                </div>
+                <iframe id="iframe-arreglos" width="560" height="315" src="https://www.youtube.com/embed/8hly31xKli0" title="Ayuda" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen a></iframe>
             </div>
         </div>
     </body>
