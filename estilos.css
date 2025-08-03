@@ -214,10 +214,11 @@ p {
 }
 
 #seleccion_de_datos:hover {
+    cursor: pointer;
     height: 8vh;
     background-color: #efefef;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
-
 
 #seleccion_de_datos option {
     background: #efefef;
@@ -226,6 +227,73 @@ p {
     border-radius: 3vh;
     border: 0px;
     height: 8vh;
+}
+
+.content {
+  display: flex;
+  gap: 1vw;
+  justify-content: center;
+  align-items: center;
+  min-height: 25vh;
+  height: 25vh;
+  flex-wrap: wrap;
+}
+
+.content .elemento-arreglo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2548e8, #4a7eff);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 70%;
+  font-size: 80%;
+  box-shadow: 0 0 8px rgba(37, 83, 233, 0.7);
+  user-select: none;
+  min-width: 60px;
+  padding: 0 0.5vw;
+}
+
+.elemento-arreglo:hover {
+    transform: scale(1.05);
+    background-color: #366de3;
+}
+
+.elemento-arreglo small {
+    font-size: 0.6rem;
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    opacity: 0.8;
+}
+
+/* Animación al aparecer */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación al eliminar */
+@keyframes fadeOutScale {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.elemento-arreglo.eliminando {
+    animation: fadeOutScale 0.3s ease forwards;
 }
 
 #valor {
@@ -431,17 +499,70 @@ p {
     z-index: 1000;
 }
 
+#icono-ayuda-arreglos {
+    position: absolute;
+    top: 6vh;
+    right: 2vw;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
 
+#icono-ayuda-arreglos:hover {
+    background-color: #efefef;
+    box-shadow: 0 0 8px rgba(37, 83, 233, 0.6);
+}
 
+@media (max-width: 768px) {
+  .interaction > div {
+    width: 90vw;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 1vh;
+    justify-content: center;
+  }
 
+  #valor, #indice {
+    width: 60%;
+    max-width: 300px;
+    font-size: 3vw;
+  }
 
+  #añadir, #acceder, #actualizar, #eliminar {
+    width: 25%;
+    min-width: 90px;
+    font-size: 3vw;
+    padding: 0.5vh 0;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+  }
 
+  .interaction > div:first-child #añadir {
+    margin-left: 0;
+  }
+  .interaction > div:last-child button:first-child {
+    margin-left: 0;
+  }
 
+  #seleccion_de_datos {
+    width: 90vw;
+    max-width: 300px;
+    font-size: 4vw;
+    margin: 1vh auto;
+    display: block;
+  }
 
-
-
-
-
-
-
-
+  .content p {
+    font-size: 4vw;
+    text-align: center;
+    padding: 0 2vw;
+  }
+}

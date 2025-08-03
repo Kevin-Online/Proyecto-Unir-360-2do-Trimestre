@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const ayudaArreglos = document.getElementById('icono-ayuda-arreglos');
     const popupArreglos = document.getElementById('pop-up-arreglos');
     const popupArreglosCerrar = document.querySelector('.pop-up-arreglos-cerrar');
-    const iframeArreglos = popupArreglos ? popupArreglos.querySelector('#iframe-Arreglos') : null;
+    const iframeArreglos = popupArreglos ? popupArreglos.querySelector('#iframe-arreglos') : null;
     const videoSrcBase = "https://www.youtube.com/embed/8hly31xKli0";
 
     if (ayudaArreglos && popupArreglos && popupArreglosCerrar && iframeArreglos) {
@@ -71,4 +71,75 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    let arreglo = [];
+
+    const contenedor = document.querySelector(".content");
+    const inputValor = document.getElementById("valor");
+    const inputIndice = document.getElementById("indice");
+
+    const btnAñadir = document.getElementById("añadir");
+    const btnAcceder = document.getElementById("acceder");
+    const btnActualizar = document.getElementById("actualizar");
+    const btnEliminar = document.getElementById("eliminar");
+
+    function renderizarArreglo() {
+        contenedor.innerHTML = "";
+        arreglo.forEach((elemento, i) => {
+            const div = document.createElement("div");
+            div.classList.add("elemento-arreglo");
+            div.textContent = arreglo[i];
+            div.className = "elemento-arreglo";
+            div.innerHTML = `<span>${elemento}</span><small>${i}</small>`;
+            contenedor.appendChild(div);
+        });
+    }
+
+    btnAñadir.addEventListener("click", () => {
+        const valor = inputValor.value.trim();
+        if (valor) {
+            arreglo.push(valor);
+            renderizarArreglo();
+            inputValor.value = "";
+        }
+    });
+
+    btnAcceder.addEventListener("click", () => {
+        const i = parseInt(inputIndice.value);
+        if (!isNaN(i) && i >= 0 && i < arreglo.length) {
+            alert(`Elemento en índice ${i}: ${arreglo[i]}`);
+        } else {
+            alert("Índice fuera de rango");
+        }
+    });
+
+    btnActualizar.addEventListener("click", () => {
+        const i = parseInt(inputIndice.value);
+        const valor = inputValor.value.trim();
+        if (!isNaN(i) && i >= 0 && i < arreglo.length && valor) {
+            arreglo[i] = valor;
+            renderizarArreglo();
+        } else {
+            alert("Índice fuera de rango o valor vacío");
+        }
+    });
+
+    btnEliminar.addEventListener("click", () => {
+        const i = parseInt(inputIndice.value);
+        if (!isNaN(i) && i >= 0 && i < arreglo.length) {
+            const elementosDOM = contenedor.querySelectorAll(".elemento-arreglo");
+            const elementoAEliminar = elementosDOM[i];
+            if (!elementoAEliminar) return;
+
+            elementoAEliminar.classList.add("eliminando");
+            setTimeout(() => {
+                arreglo.splice(i, 1);
+                renderizarArreglo();
+            }, 300);
+        } else {
+            alert("Índice fuera de rango");
+        }
+    });
 });
