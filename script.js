@@ -109,9 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
     btnAcceder.addEventListener("click", () => {
         const i = parseInt(inputIndice.value);
         if (!isNaN(i) && i >= 0 && i < arreglo.length) {
-            alert(`Elemento en índice ${i}: ${arreglo[i]}`);
+            alert(`El índice ${i} contiene ${arreglo[i]} como valor`);
         } else {
-            alert("Índice fuera de rango");
+            alert("índice inexistente");
         }
     });
 
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
             arreglo[i] = valor;
             renderizarArreglo();
         } else {
-            alert("Índice fuera de rango o valor vacío");
+            alert("Índice inexistente o valor vacío");
         }
     });
 
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 renderizarArreglo();
             }, 300);
         } else {
-            alert("Índice fuera de rango");
+            alert("Índice inexistente");
         }
     });
 });

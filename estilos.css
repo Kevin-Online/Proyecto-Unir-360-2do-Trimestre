@@ -149,17 +149,6 @@ html {
     background: #efefef;
 }
 
-.content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: bold;
-    width: 100%;
-    min-height: 20vh;
-    height: auto;
-    flex-wrap: wrap;
-}
-
 .interaction {
     display: flex;
     flex-direction: column;
@@ -168,6 +157,7 @@ html {
     min-height: 10vh;
     height: auto;
     gap: 0.5vw;
+    padding: 3vh;
 }
 
 .interaction > div {
@@ -230,13 +220,21 @@ p {
 }
 
 .content {
-  display: flex;
+  display: -webkit-inline-flex;
   gap: 1vw;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   min-height: 25vh;
   height: 25vh;
   flex-wrap: wrap;
+  flex-direction: row;
+  font-size: bold;
+  width: 100%;
+  min-height: 20vh;
+  height: auto;
+  flex-wrap: wrap;
+  align-content: center;
+  overflow: overlay;
 }
 
 .content .elemento-arreglo {
@@ -247,25 +245,20 @@ p {
   color: white;
   font-weight: bold;
   border-radius: 50%;
-  height: 70%;
-  font-size: 80%;
-  box-shadow: 0 0 8px rgba(37, 83, 233, 0.7);
   user-select: none;
-  min-width: 60px;
-  padding: 0 0.5vw;
-}
-
-.elemento-arreglo:hover {
-    transform: scale(1.05);
-    background-color: #366de3;
+  width: 150px;
+  height: 150px;
+  padding: 0.5vw;
+  overflow: hidden;
 }
 
 .elemento-arreglo small {
-    font-size: 0.6rem;
+    color: #e7e7e7;
+    font-size: 1rem;
     position: absolute;
-    bottom: 4px;
-    right: 6px;
     opacity: 0.8;
+    margin-top: 100px;
+    visibility: visible;
 }
 
 /* Animación al aparecer */
@@ -295,6 +288,8 @@ p {
 .elemento-arreglo.eliminando {
     animation: fadeOutScale 0.3s ease forwards;
 }
+
+.elemento-arreglo
 
 #valor {
     width: 45vw;
