@@ -34,10 +34,10 @@
                 <label for="seleccion_de_datos"></label>
                 <select id="seleccion_de_datos" name="seleccion_de_datos">
                     <option value="arreglos">Arreglos</option>
-                    <option value="listas_enlazadas">Listas Enlazadas</option>
-                    <option value="pilas">Pilas</option>
-                    <option value="colas">Colas</option>
-                    <option value="arbol">Arbol</option>
+                    <option value="listas_enlazadas">Listas Enlazadas (Próximamente)</option>
+                    <option value="pilas">Pilas (Próximamente)</option>
+                    <option value="colas">Colas (Próximamente)</option>
+                    <option value="arbol">Arbol (Próximamente)</option>
                 </select>
                 <span id="icono-ayuda-arreglos" title="Ayuda">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -51,7 +51,7 @@
             </div>
             <div class="interaction">
                 <div>
-                    <input type="text" id="valor" placeholder="Valor">
+                    <input type="text" id="valor" placeholder="Valor" maxlength="20">
                     <Button id="añadir">Añadir</Button>
                 </div>
                 <div>
@@ -75,10 +75,14 @@
         <div id="pop-up-arreglos" class="modal-ayuda">
             <div class="modal-ayuda-content">
                 <div class="modal-ayuda-header">
-                    <h2>¿Cómo funciona esta página?</h2>
+                    <h2>Ayuda de Arreglos</h2>
                     <span class="close-ayuda pop-up-arreglos-cerrar">&times;</span>
                 </div>
-                <iframe id="iframe-arreglos" width="560" height="315" src="https://www.youtube.com/embed/8hly31xKli0" title="Ayuda" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div id="galeria-arreglos" class="galeria-arreglos">
+                    <img id="imagen-galeria" src="" alt="Galería de ayuda">
+                    <a id="prev" class="galeria-btn prev">&#10094</a>
+                    <a id="next" class="galeria-btn next">&#10095</a>
+                </div>
             </div>
         </div>
     </body>

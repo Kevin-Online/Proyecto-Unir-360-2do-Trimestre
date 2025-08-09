@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-   
+    
     const infoSection = document.querySelector('.info');
     const mainSection = document.querySelector('.main');
     if (infoSection && mainSection) {
@@ -48,19 +48,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const ayudaArreglos = document.getElementById('icono-ayuda-arreglos');
     const popupArreglos = document.getElementById('pop-up-arreglos');
     const popupArreglosCerrar = document.querySelector('.pop-up-arreglos-cerrar');
-    const iframeArreglos = popupArreglos ? popupArreglos.querySelector('#iframe-arreglos') : null;
-    const videoSrcBase = "https://www.youtube.com/embed/8hly31xKli0";
+    const galeriaArreglos = document.getElementById('galeria-arreglos');
+    const imagenGaleria = document.getElementById('imagen-galeria');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
 
-    if (ayudaArreglos && popupArreglos && popupArreglosCerrar && iframeArreglos) {
+    const rutasImagenes = ["Recursos/1.png", "Recursos/2.png", "Recursos/3.png", "Recursos/4.png", "Recursos/5.png"];
+    let imagenActual = 0;
+
+    function mostrarImagen(indice) {
+        if (imagenGaleria && rutasImagenes.length > 0) {
+            imagenGaleria.src = rutasImagenes[indice];
+        }
+    }
+
+    if (ayudaArreglos && popupArreglos && popupArreglosCerrar) {
         ayudaArreglos.addEventListener('click', function(e) {
             e.preventDefault();
-            iframeArreglos.src = videoSrcBase + "?autoplay=1";
+            mostrarImagen(imagenActual);
             popupArreglos.style.display = 'flex';
         });
 
         function cerrarPopupArreglos() {
             popupArreglos.style.display = 'none';
-            iframeArreglos.src = "";
         }
 
         popupArreglosCerrar.addEventListener('click', cerrarPopupArreglos);
@@ -70,8 +80,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 cerrarPopupArreglos();
             }
         });
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                imagenActual = (imagenActual - 1 + rutasImagenes.length) % rutasImagenes.length;
+                mostrarImagen(imagenActual);
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                imagenActual = (imagenActual + 1) % rutasImagenes.length;
+                mostrarImagen(imagenActual);
+            });
+        }
     }
 });
+
+function ajustarFontSize(elemento) {
+    let span = elemento.querySelector('span');
+    if (!span) return;
+
+    const contenedorAncho = elemento.offsetWidth;
+    const textoAncho = span.scrollWidth;
+
+    if (textoAncho > contenedorAncho) {
+        let ratio = contenedorAncho / textoAncho;
+        let tamanoFuenteActual = parseFloat(window.getComputedStyle(span).fontSize);
+        let nuevoTamano = tamanoFuenteActual * ratio * 0.9;
+        span.style.fontSize = `${nuevoTamano}px`;
+    } else {
+        span.style.fontSize = ''; 
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     let arreglo = [];
@@ -84,16 +125,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnAcceder = document.getElementById("acceder");
     const btnActualizar = document.getElementById("actualizar");
     const btnEliminar = document.getElementById("eliminar");
+    
+    inputValor.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            btnAñadir.click();
+        }
+    });
 
     function renderizarArreglo() {
         contenedor.innerHTML = "";
+        if (arreglo.length === 0) {
+            contenedor.innerHTML = "<p>Arreglo vacio. ¡Añade elementos!</p>";
+            return;
+        }
         arreglo.forEach((elemento, i) => {
             const div = document.createElement("div");
             div.classList.add("elemento-arreglo");
-            div.textContent = arreglo[i];
-            div.className = "elemento-arreglo";
             div.innerHTML = `<span>${elemento}</span><small>${i}</small>`;
             contenedor.appendChild(div);
+            ajustarFontSize(div);
         });
     }
 
@@ -113,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("índice inexistente");
         }
+        inputIndice.value = "";
     });
 
     btnActualizar.addEventListener("click", () => {
@@ -124,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("Índice inexistente o valor vacío");
         }
+        inputIndice.value = "";
     });
 
     btnEliminar.addEventListener("click", () => {
@@ -141,5 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("Índice inexistente");
         }
+        inputIndice.value = "";
     });
+});
+
+window.addEventListener('resize', () => {
+    const elementos = document.querySelectorAll(".elemento-arreglo");
+    elementos.forEach(ajustarFontSize);
 });

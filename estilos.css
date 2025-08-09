@@ -165,6 +165,7 @@ html {
     gap: 0.5vw;
     width: 700px;
     justify-content: center;
+    font-size: 20px;
 }
 
 h1 {
@@ -222,7 +223,7 @@ p {
 .content {
   display: -webkit-inline-flex;
   gap: 1vw;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   min-height: 25vh;
   height: 25vh;
@@ -250,6 +251,7 @@ p {
   height: 150px;
   padding: 0.5vw;
   overflow: hidden;
+  text-align: center;
 }
 
 .elemento-arreglo small {
@@ -261,7 +263,6 @@ p {
     visibility: visible;
 }
 
-/* Animación al aparecer */
 @keyframes fadeInScale {
     0% {
         opacity: 0;
@@ -273,7 +274,6 @@ p {
     }
 }
 
-/* Animación al eliminar */
 @keyframes fadeOutScale {
     0% {
         opacity: 1;
@@ -289,12 +289,9 @@ p {
     animation: fadeOutScale 0.3s ease forwards;
 }
 
-.elemento-arreglo
-
 #valor {
     width: 45vw;
     height: 8vh;
-    font-size: 2vh;
     border: 5px solid rgb(0, 0, 0);
     border-radius: 2vh;
     font-weight: bold;
@@ -308,7 +305,6 @@ p {
     width: 25vw;
     min-width: fit-content;
     height: 8vh;
-    font-size: 2vh;
     border: 5px solid rgb(37, 83, 233);
     border-radius: 5vh;
     font-weight: bold;
@@ -319,7 +315,6 @@ p {
 #indice {
     width: 25vw;
     height: 8vh;
-    font-size: 2vh;
     border: 5px solid rgb(0, 0, 0);
     border-radius: 2vh;
     font-weight: bold;
@@ -333,7 +328,6 @@ p {
     width: 15vw;
     min-width: fit-content;
     height: 8vh;
-    font-size: 2vh;
     border: 5px solid rgb(37, 83, 233);
     border-radius: 5vh;
     font-weight: bold;
@@ -348,7 +342,6 @@ p {
     width: 15vw;
     min-width: fit-content;
     height: 8vh;
-    font-size: 2vh;
     border: 5px solid rgb(37, 83, 233);
     border-radius: 5vh;
     font-weight: bold;
@@ -363,7 +356,6 @@ p {
     width: 15vw;
     min-width: fit-content;
     height: 8vh;
-    font-size: 2vh;
     border: 5px solid rgb(37, 83, 233);
     border-radius: 5vh;
     font-weight: bold;
@@ -516,6 +508,54 @@ p {
     box-shadow: 0 0 8px rgba(37, 83, 233, 0.6);
 }
 
+.galeria-arreglos {
+    position: relative;
+    width: 100%;
+    height: 315px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagen-galeria {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 1vh;
+}
+
+.galeria-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0,0,0,0.4);
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.galeria-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
 @media (max-width: 768px) {
   .interaction > div {
     width: 90vw;
@@ -528,13 +568,13 @@ p {
   #valor, #indice {
     width: 60%;
     max-width: 300px;
-    font-size: 3vw;
+    font-size: 2vw;
   }
 
   #añadir, #acceder, #actualizar, #eliminar {
     width: 25%;
     min-width: 90px;
-    font-size: 3vw;
+    font-size: 2vw;
     padding: 0.5vh 0;
     margin-left: 0.5vw;
     margin-right: 0.5vw;
