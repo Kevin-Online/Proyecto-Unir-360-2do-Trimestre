@@ -107,7 +107,7 @@ function ajustarFontSize(elemento) {
     if (textoAncho > contenedorAncho) {
         let ratio = contenedorAncho / textoAncho;
         let tamanoFuenteActual = parseFloat(window.getComputedStyle(span).fontSize);
-        let nuevoTamano = tamanoFuenteActual * ratio * 0.9;
+        let nuevoTamano = tamanoFuenteActual * ratio * 0.7;
         span.style.fontSize = `${nuevoTamano}px`;
     } else {
         span.style.fontSize = ''; 
@@ -125,6 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnAcceder = document.getElementById("acceder");
     const btnActualizar = document.getElementById("actualizar");
     const btnEliminar = document.getElementById("eliminar");
+
+    const modalAcceder = document.getElementById('modal-acceder');
+    const closeAcceder = document.querySelector('.close-acceder');
+    const modalMensaje = document.getElementById('modal-acceder-mensaje');
     
     inputValor.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -150,8 +154,24 @@ document.addEventListener("DOMContentLoaded", () => {
     btnAñadir.addEventListener("click", () => {
         const valor = inputValor.value.trim();
         if (valor) {
+            const mensajeVacio = contenedor.querySelector('p');
+            if (mensajeVacio) {
+                mensajeVacio.remove();
+            }
+
             arreglo.push(valor);
-            renderizarArreglo();
+            const div = document.createElement("div");
+            div.classList.add("elemento-arreglo");
+            div.innerHTML = `<span>${valor}</span><small>${arreglo.length - 1}</small>`;
+        
+            contenedor.appendChild(div);
+            ajustarFontSize(div);
+        
+            div.classList.add("apareciendo");
+            setTimeout(() => {
+                div.classList.remove("apareciendo");
+            }, 300);
+        
             inputValor.value = "";
         }
     });
@@ -159,11 +179,31 @@ document.addEventListener("DOMContentLoaded", () => {
     btnAcceder.addEventListener("click", () => {
         const i = parseInt(inputIndice.value);
         if (!isNaN(i) && i >= 0 && i < arreglo.length) {
-            alert(`El índice ${i} contiene ${arreglo[i]} como valor`);
+            const elementoDOM = contenedor.querySelectorAll(".elemento-arreglo")[i];
+            if (elementoDOM) {
+                elementoDOM.classList.add("resaltando");
+                setTimeout(() => {
+                    elementoDOM.classList.remove("resaltando");
+                }, 1000);
+            }
+
+            modalMensaje.textContent = `El índice ${i} contiene "${arreglo[i]}" como valor.`;
+            modalAcceder.style.display = 'flex';
         } else {
-            alert("índice inexistente");
+            modalMensaje.textContent = "Índice inexistente.";
+            modalAcceder.style.display = 'flex';
         }
         inputIndice.value = "";
+    });
+
+    closeAcceder.addEventListener('click', () => {
+        modalAcceder.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modalAcceder) {
+            modalAcceder.style.display = 'none';
+        }
     });
 
     btnActualizar.addEventListener("click", () => {
@@ -171,11 +211,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const valor = inputValor.value.trim();
         if (!isNaN(i) && i >= 0 && i < arreglo.length && valor) {
             arreglo[i] = valor;
-            renderizarArreglo();
+            const elementoDOM = contenedor.querySelectorAll(".elemento-arreglo")[i];
+            if (elementoDOM) {
+                elementoDOM.querySelector("span").textContent = valor;
+                elementoDOM.classList.add("actualizando");
+                setTimeout(() => {
+                    elementoDOM.classList.remove("actualizando");
+                }, 500);
+                ajustarFontSize(elementoDOM);
+            }
         } else {
             alert("Índice inexistente o valor vacío");
         }
         inputIndice.value = "";
+        inputValor.value = "";
     });
 
     btnEliminar.addEventListener("click", () => {
@@ -188,13 +237,17 @@ document.addEventListener("DOMContentLoaded", () => {
             elementoAEliminar.classList.add("eliminando");
             setTimeout(() => {
                 arreglo.splice(i, 1);
-                renderizarArreglo();
+                elementoAEliminar.remove(); // Elimina el elemento del DOM después de la animación
+                renderizarArreglo(); // Redibuja el resto para que los índices sean correctos
             }, 300);
         } else {
             alert("Índice inexistente");
         }
         inputIndice.value = "";
     });
+
+    // Inicia el renderizado del arreglo vacío
+    renderizarArreglo();
 });
 
 window.addEventListener('resize', () => {

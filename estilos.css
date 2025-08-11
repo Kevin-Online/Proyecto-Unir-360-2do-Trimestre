@@ -12,7 +12,7 @@ html {
 .main {
     min-height: calc(100vh - 10vh);
     width: 100%;
-    font-size: 5vh;
+    font-size: 1.7em;
     margin-top: 10vh;
     display: flex;
     flex-direction: column;
@@ -105,6 +105,7 @@ html {
     font-size: 7vh;
     margin-bottom: 10vh;
     margin-top: 10vh;
+    max-width: 70vw;
     font-weight: bold;
     text-shadow: none;
     line-height: 1.5;
@@ -112,9 +113,9 @@ html {
 
 .info-body p {
     color: #444;
-    font-size: 2.5vh;
+    font-size: 1.5rem;
     margin-bottom: 1.5vh;
-    max-width: 700px;
+    max-width: 80vw;
     line-height: 1.5;
     text-shadow: none;
 }
@@ -264,22 +265,26 @@ p {
 }
 
 @keyframes fadeInScale {
-    0% {
+    from {
         opacity: 0;
         transform: scale(0.8);
     }
-    100% {
+    to {
         opacity: 1;
         transform: scale(1);
     }
 }
 
+.elemento-arreglo.apareciendo {
+    animation: fadeInScale 0.3s ease-out forwards;
+}
+
 @keyframes fadeOutScale {
-    0% {
+    from {
         opacity: 1;
         transform: scale(1);
     }
-    100% {
+    to {
         opacity: 0;
         transform: scale(0.5);
     }
@@ -287,6 +292,36 @@ p {
 
 .elemento-arreglo.eliminando {
     animation: fadeOutScale 0.3s ease forwards;
+}
+
+@keyframes resaltando {
+    0%, 100% {
+        transform: scale(1);
+        background: linear-gradient(135deg, #2548e8, #4a7eff);
+    }
+    50% {
+        transform: scale(0.9);
+        background: #4caf50;
+    }
+}
+
+.elemento-arreglo.resaltando {
+    animation: resaltando 1s ease-out;
+}
+
+@keyframes actualizando {
+    0%, 100% {
+        transform: scale(1);
+        background: linear-gradient(135deg, #2548e8, #4a7eff);
+    }
+    50% {
+        transform: scale(0.9);
+        background: #f0c419;
+    }
+}
+
+.elemento-arreglo.actualizando {
+    animation: actualizando 0.5s ease-out;
 }
 
 #valor {
@@ -368,6 +403,10 @@ p {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     border-color: #222222;
+}
+
+#valor, #añadir, #indice, #acceder, #actualizar, #eliminar {
+    font-size: 1em;
 }
 
 #añadir:hover {
@@ -600,4 +639,72 @@ p {
     text-align: center;
     padding: 0 2vw;
   }
+}
+
+.modal-acceder {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content-acceder {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-acceder {
+    color: #aaa;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-acceder:hover,
+.close-acceder:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-acceder-titulo {
+    color: rgb(37, 83, 233);
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
+
+#modal-acceder-mensaje {
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
 }
