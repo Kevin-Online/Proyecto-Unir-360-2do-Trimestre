@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
 
-    const rutasImagenes = ["Recursos/1.png", "Recursos/2.png", "Recursos/3.png", "Recursos/4.png", "Recursos/5.png"];
+    const rutasImagenes = ["Recursos/1.png", "Recursos/2.png", "Recursos/3.png", "Recursos/4.png", "Recursos/5.png", "Recursos/6.png", "Recursos/7.png", "Recursos/8.png", "Recursos/9.png"];
     let imagenActual = 0;
 
     function mostrarImagen(indice) {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             modalMensaje.textContent = `El índice ${i} contiene "${arreglo[i]}" como valor.`;
             modalAcceder.style.display = 'flex';
         } else {
-            modalMensaje.textContent = "Índice inexistente.";
+            modalMensaje.textContent = "Debes indicar un índice existente.";
             modalAcceder.style.display = 'flex';
         }
         inputIndice.value = "";
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ajustarFontSize(elementoDOM);
             }
         } else {
-            alert("Índice inexistente o valor vacío");
+            alert("Debes indicar un índice existente y un nuevo valor.");
         }
         inputIndice.value = "";
         inputValor.value = "";
@@ -237,16 +237,15 @@ document.addEventListener("DOMContentLoaded", () => {
             elementoAEliminar.classList.add("eliminando");
             setTimeout(() => {
                 arreglo.splice(i, 1);
-                elementoAEliminar.remove(); // Elimina el elemento del DOM después de la animación
-                renderizarArreglo(); // Redibuja el resto para que los índices sean correctos
+                elementoAEliminar.remove();
+                renderizarArreglo();
             }, 300);
         } else {
-            alert("Índice inexistente");
+            alert("Debes indicar un índice existente.");
         }
         inputIndice.value = "";
     });
 
-    // Inicia el renderizado del arreglo vacío
     renderizarArreglo();
 });
 
