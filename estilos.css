@@ -460,7 +460,7 @@ p {
 
 .modal-ayuda-content iframe {
     width: 100%;
-    height: 315px;
+    height: 100%;
     border: none;
     border-radius: 1vh;
 }
