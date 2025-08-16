@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalAyuda = document.getElementById('modal-ayuda');
     const closeAyuda = document.querySelector('.close-ayuda');
     const iframeAyuda = modalAyuda ? modalAyuda.querySelector('#iframe-ayuda') : null;
-    const videoSrcBaseArray = "https://www.youtube.com/embed/8hly31xKli0";
+    const videoSrcBaseArray = "https://www.youtube.com/embed/ECg_yg9YdnE?si=eWEwxydJexAilPVW";
 
     if (ayudaBtn && modalAyuda && closeAyuda && iframeAyuda) {
         ayudaBtn.addEventListener('click', function(e) {
